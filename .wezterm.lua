@@ -1,7 +1,7 @@
 -- currentHour = tonumber(os.date('%H'))
 
 -- randomNumber = math.random(10)
-randomNumber = 4
+randomNumber = 6
 
 if randomNumber < 5 then
   myColors = {
@@ -50,7 +50,7 @@ config.check_for_updates = false
 config.window_close_confirmation = 'AlwaysPrompt'
 config.show_new_tab_button_in_tab_bar = false
 config.show_tab_index_in_tab_bar = true
-config.window_background_opacity = 0.97
+config.window_background_opacity = 0.99
 -- config.macos_window_background_blur = 10
 config.text_background_opacity = 1
 config.initial_rows = 30
