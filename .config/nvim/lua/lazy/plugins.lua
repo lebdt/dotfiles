@@ -20,31 +20,36 @@ return {
     lazy = false,
   },
 
-  -- "nvim-treesitter/playground",
+  "nvim-treesitter/playground",
 
   "windwp/nvim-ts-autotag",
 
   {
-  "VonHeikemen/lsp-zero.nvim",
-  branch = "v2.x",
-  dependencies = {
-    -- LSP Support
-    {"neovim/nvim-lspconfig"},
-    {"williamboman/mason.nvim"},
-    {"williamboman/mason-lspconfig.nvim"},
+    "VonHeikemen/lsp-zero.nvim",
+    branch = "v2.x",
+    dependencies = {
+      -- LSP Support
+      {"neovim/nvim-lspconfig"},
+      {"williamboman/mason.nvim"},
+      {"williamboman/mason-lspconfig.nvim"},
 
-    -- Autocompletion
-    {"hrsh7th/nvim-cmp"},
-    {"hrsh7th/cmp-nvim-lsp"},
-    {"L3MON4D3/LuaSnip"},
-  }},
+      -- Autocompletion
+      {"hrsh7th/nvim-cmp"},
+      {"hrsh7th/cmp-nvim-lsp"},
+      {"L3MON4D3/LuaSnip"},
+    },
+    lazy = false,
+  },
 
   {
     "mbbill/undotree",
     lazy = false,
   },
 
-  "nvim-tree/nvim-web-devicons",
+  {
+    "nvim-tree/nvim-web-devicons",
+    lazy = false,
+  },
 
   {
     "lukas-reineke/indent-blankline.nvim",
@@ -62,14 +67,18 @@ return {
   {
     "numToStr/Comment.nvim",
     config = true,
-    opts = {
-        -- add any options here
-    },
+    opts = {},
     lazy = false,
   },
 
   {
     "m4xshen/autoclose.nvim",
+    lazy = false,
+  },
+
+  {
+    "kylechui/nvim-surround",
+    version = "*",
     lazy = false,
   },
 }
