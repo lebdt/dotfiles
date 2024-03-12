@@ -216,7 +216,7 @@ alias reverse="python3 ~/Documents/Python/reverse_text.py"
 
 alias gmaps="python3 ~/Documents/Python/Google\ Maps\ AutoSearch/GMaps_Search.py"
 
-alias step-one="cd /Users/ebd/Documents/NewYorkLife/X-OtherFiles/EmailSender/ && python3 step-one.py && cd /Users/ebd/"
+alias step-one="cd /Users/ebd/Documents/RuggeriGusttati/X-OtherFiles/EmailSender/ && python3 step-one.py && cd /Users/ebd/"
 
 alias texrun="mkdir -p output && lualatex --output-directory=output"
 

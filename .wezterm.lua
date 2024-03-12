@@ -30,8 +30,11 @@ if wezterm.config_builder then
 end
 
 -- config.freetype_interpreter_version = 40
+-- config.freetype_load_target = "Light"
+config.freetype_load_flags = 'NO_HINTING'
 config.front_end = "WebGpu"
-config.webgpu_power_preference = "HighPerformance"
+-- config.front_end = "OpenGL"
+config.webgpu_power_preference = "LowPower"
 config.tab_bar_at_bottom = true
 config.hide_tab_bar_if_only_one_tab = true
 config.cursor_blink_rate = 0
@@ -39,10 +42,10 @@ config.audible_bell = 'Disabled'
 config.bold_brightens_ansi_colors = "BrightAndBold" or true
 config.show_tabs_in_tab_bar = true
 config.show_new_tab_button_in_tab_bar = false
-config.font = wezterm.font('RobotoMono Nerd Font Mono')
-config.font_size = 16
-config.cell_width = 0.9
-config.line_height = 1.02
+config.font = wezterm.font('JetBrainsMono Nerd Font Mono')
+config.font_size = 18
+config.cell_width = 0.92
+config.line_height = 1.04
 config.use_fancy_tab_bar = false
 config.tab_max_width = 180
 config.window_decorations = "RESIZE"
@@ -53,9 +56,9 @@ config.show_new_tab_button_in_tab_bar = false
 config.show_tab_index_in_tab_bar = true
 config.window_background_opacity = 0.999
 -- config.macos_window_background_blur = 10
-config.text_background_opacity = 1
-config.initial_rows = 30
-config.initial_cols = 92
+-- config.text_background_opacity = 1
+-- config.initial_rows = 30
+-- config.initial_cols = 92
 
 local function basename(s)
   return s:gsub('(.*[/\\])(.*)', '%2')
@@ -65,7 +68,7 @@ end
 
 config.colors = {
   cursor_fg = "#010101",
-  cursor_bg = "#dedede",
+  cursor_bg = "#60d787",
   cursor_border = myColors.bg,
   background = myColors.bg,
 

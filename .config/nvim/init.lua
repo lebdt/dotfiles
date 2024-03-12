@@ -32,6 +32,7 @@ end
 
 -- opt.updatetime = 900
 opt.autoread = true
+opt.incsearch = false
 opt.spell = false
 opt.splitright = true
 opt.splitbelow = true
@@ -80,7 +81,7 @@ let tabStr = ''
         if i + 1 == tabpagenr()
             let tabStr ..= '%#TabLineSel#  ' .. '◉' .. '' .. '─' .. fnamemodify(bufname(tabpagebuflist(i+1)[tabpagewinnr(i+1)-1]), ':t') .. ' '
         else
-            let tabStr ..= '%#TabLine#  ' .. '○' .. '─' .. fnamemodify(bufname(tabpagebuflist(i+1)[tabpagewinnr(i+1)-1]), ':t') .. ' '
+            let tabStr ..= '%#TabLine#  ' .. '○' .. '─' .. bufname(tabpagebuflist(i+1)[tabpagewinnr(i+1)-1]) .. ' '
         endif
     endfor
     return tabStr

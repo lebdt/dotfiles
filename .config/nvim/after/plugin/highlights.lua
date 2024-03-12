@@ -260,7 +260,7 @@ local xterm_to_gui = {
 vim.cmd [[highlight StatusLine ctermbg=NONE ctermfg=NONE cterm=NONE guifg=NONE guibg=NONE]]
 vim.cmd [[highlight StatusLineNC ctermbg=NONE ctermfg=NONE cterm=NONE guifg=NONE guibg=NONE]]
 
-vim.api.nvim_set_hl(0, "SpellBad",   { fg="#989898", ctermfg=242, ctermbg=NONE, italic=true })
+vim.api.nvim_set_hl(0, "SpellBad",   { fg="#989898", ctermfg=248, ctermbg=NONE, italic=false, underline=true })
 vim.api.nvim_set_hl(0, "SpellCap",   { ctermfg=NONE, ctermbg=NONE })
 
 vim.api.nvim_set_hl(0, "Folded",   { ctermfg=102, ctermbg=NONE })
@@ -271,7 +271,8 @@ vim.api.nvim_set_hl(0, "String",    { fg="#87af5f", ctermfg=107 })
 vim.api.nvim_set_hl(0, "Type",      { fg="#00ffaf", ctermfg=49 })
 vim.api.nvim_set_hl(0, "Comment",   { fg="#626262", ctermfg=241, italic=true, })
 vim.api.nvim_set_hl(0, "Constant",  { fg="#eeeeee", ctermfg=255, bold=true, })
--- vim.api.nvim_set_hl(0, "Function",  { fg="#ffd7af", ctermfg=223, bold=true, })
+vim.api.nvim_set_hl(0, "Identifier", { fg=xterm_to_gui[230], ctermfg=230 })
+vim.api.nvim_set_hl(0, "Function",  { fg="#ffd7af", ctermfg=223, bold=true, })
 vim.api.nvim_set_hl(0, "Keyword",   { fg="#ff875f", ctermfg=209 })
 vim.api.nvim_set_hl(0, "Exception", { fg="#ff875f", ctermfg=209 })
 vim.api.nvim_set_hl(0, "Float",     { fg="#87af5f", ctermfg=107 })
@@ -292,11 +293,14 @@ vim.api.nvim_set_hl(0, "Normal", { ctermbg=NONE, ctermfg=255, fg=xterm_to_gui[25
 vim.api.nvim_set_hl(0, "NormalFloat", { ctermbg=NONE, ctermfg=249, bg=NONE, fg=xterm_to_gui[249] })
 vim.api.nvim_set_hl(0, "TabLineSel", { ctermbg=NONE, bold=false, ctermfg=253, bg=NONE, fg=xterm_to_gui[253]})
 vim.api.nvim_set_hl(0, "TabLine", { ctermfg=240, ctermbg=NONE, bg=NONE, fg=xterm_to_gui[240]})
-vim.api.nvim_set_hl(0, "Search", { ctermfg=160, ctermbg=NONE, underline=false, bold=true, bg=NONE, fg="#d70000" })
+vim.api.nvim_set_hl(0, "Search", { ctermfg=161, ctermbg=NONE, underline=false, bold=true, bg=NONE, fg="#d70000" })
 vim.api.nvim_set_hl(0, "FloatBorder", { ctermbg=NONE, ctermfg=255, bg=NONE, fg=xterm_to_gui[255] })
 vim.api.nvim_set_hl(0, "MsgArea", { ctermfg=180, fg=xterm_to_gui[180]})
 vim.api.nvim_set_hl(0, "MsgSeparator", { ctermbg=NONE, bg=NONE})
-vim.api.nvim_set_hl(0, "CursorlineNr", { ctermbg=NONE, ctermfg=255, bold=true, bg=NONE, fg=xterm_to_gui[255]})
-vim.api.nvim_set_hl(0, "LineNr", { ctermfg=240, ctermbg=NONE, bg=NONE, fg=xterm_to_gui[240]})
+vim.api.nvim_set_hl(0, "CursorlineNr", { ctermbg=NONE, ctermfg=78, bold=false, bg=NONE, fg=xterm_to_gui[78]})
+vim.api.nvim_set_hl(0, "LineNr", { ctermfg=238, ctermbg=NONE, bg=NONE, fg=xterm_to_gui[240]})
 vim.api.nvim_set_hl(0, "NonText", { bold=false, italic=false, underline=false, ctermfg=NONE,fg=NONE })
 vim.api.nvim_set_hl(0, "MatchParen", { bold=true, italic=false, underline=false, ctermfg=35, fg=xterm_to_gui[35] })
+
+-- Netrw
+vim.api.nvim_set_hl(0, "netrwClassify", { ctermfg=37, fg=xterm_to_gui[37] })

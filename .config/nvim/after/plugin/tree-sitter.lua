@@ -9,8 +9,8 @@ require'nvim-treesitter.configs'.setup {
     enable = true,
   },
 }
---
---
+
+
 api.nvim_set_hl(0, "@boolean", { fg="#87af5f", ctermfg=107, italic=true, bold=true, })
 api.nvim_set_hl(0, "@comment", { fg="#626262", ctermfg=241, italic=true, })
 api.nvim_set_hl(0, "@conditional", { fg="#ff875f", ctermfg=209 })
@@ -32,6 +32,7 @@ api.nvim_set_hl(0, "@punctuation", { fg="#949494", ctermfg=246, bold=true, })
 api.nvim_set_hl(0, "@punctuation.special", { fg="#949494", ctermfg=204, bold=true, })
 api.nvim_set_hl(0, "@repeat", { fg="#ff875f", ctermfg=209 })
 api.nvim_set_hl(0, "@string", { fg="#87af5f", ctermfg=107 })
+api.nvim_set_hl(0, "@text.literal.block", { fg="#00ffaf", ctermfg=205, bold=true })
 api.nvim_set_hl(0, "@type", { fg="#00ffaf", ctermfg=49 })
 api.nvim_set_hl(0, "@tag", { fg="#ae2335", ctermfg=204 })
 api.nvim_set_hl(0, "@tag.delimiter", { fg="#808080", ctermfg=242 })

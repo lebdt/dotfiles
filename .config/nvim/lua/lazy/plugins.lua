@@ -81,4 +81,14 @@ return {
     version = "*",
     lazy = false,
   },
+
+  {
+    "nvim-tree/nvim-tree.lua",
+    lazy=false,
+  },
+
+  -- {
+  --   "sheerun/vim-polyglot",
+  --   lazy=false,
+  -- },
 }
