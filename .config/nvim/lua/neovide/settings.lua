@@ -1,11 +1,13 @@
+if vim.g.neovide then
+
 -- Helper function for transparency formatting
 local alpha = function()
   return string.format("%x", math.floor(255 * vim.g.transparency or 0.8))
 end
-vim.g.neovide_transparency = 0.8
-vim.g.transparency = 0.97
--- vim.g.neovide_background_color = "#0f1117" .. alpha()
-vim.g.neovide_background_color = "#12171f" .. alpha()
+vim.g.neovide_transparency = 1
+vim.g.transparency = 0
+vim.g.neovide_background_color = "#0f1117" .. alpha()
+-- vim.g.neovide_background_color = "#12171f" .. alpha()
 vim.g.neovide_padding_top = 30
 vim.g.neovide_padding_bottom = 1
 vim.g.neovide_padding_right = 28
@@ -14,6 +16,7 @@ vim.g.neovide_hide_mouse_when_typing = true
 
 vim.o.guifont = "RobotoMono Nerd Font Mono:w-1:h" .. vim.g.neovideFontSize .. ":#e-antialias:#h-none"
 -- vim.opt.titlestring = [[ %{substitute(substitute(expand('%:p'), "/"," ",""),"/", " ∙ ","g")} ]]
+vim.opt.title = true
 vim.opt.titlestring = [[ %{expand('%:p')} ]]
 vim.opt.linespace = 0
 vim.g.neovide_input_macos_alt_is_meta = true
@@ -66,3 +69,4 @@ vim.keymap.set("i", "<D-->", function()
 end)
 
 
+end

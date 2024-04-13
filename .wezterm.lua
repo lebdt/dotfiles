@@ -1,7 +1,7 @@
 -- currentHour = tonumber(os.date('%H'))
 
 -- randomNumber = math.random(10)
-randomNumber = 6
+randomNumber = 10
 
 if randomNumber < 5 then
   myColors = {
@@ -34,7 +34,7 @@ end
 config.freetype_load_flags = 'NO_HINTING'
 config.front_end = "WebGpu"
 -- config.front_end = "OpenGL"
-config.webgpu_power_preference = "LowPower"
+-- config.webgpu_power_preference = "LowPower"
 config.tab_bar_at_bottom = true
 config.hide_tab_bar_if_only_one_tab = true
 config.cursor_blink_rate = 0

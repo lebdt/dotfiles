@@ -1,7 +1,7 @@
 return {
   { 'christoomey/vim-tmux-navigator', lazy = false },
 
-  { 'rcarriga/nvim-notify', lazy = false },
+  -- { 'rcarriga/nvim-notify', lazy = false },
 
   {
     "nvim-telescope/telescope.nvim",

@@ -265,10 +265,11 @@ vim.api.nvim_set_hl(0, "SpellCap",   { ctermfg=NONE, ctermbg=NONE })
 
 vim.api.nvim_set_hl(0, "Folded",   { ctermfg=102, ctermbg=NONE })
 
+vim.api.nvim_set_hl(0, "ErrorMsg", { ctermfg=9, ctermbg=NONE })
 
 vim.api.nvim_set_hl(0, "Preproc",   { fg="#5fd7ff", ctermfg=81 })
 vim.api.nvim_set_hl(0, "String",    { fg="#87af5f", ctermfg=107 })
-vim.api.nvim_set_hl(0, "Type",      { fg="#00ffaf", ctermfg=49 })
+vim.api.nvim_set_hl(0, "Type",      { fg="#00ffaf", ctermfg=79 })
 vim.api.nvim_set_hl(0, "Comment",   { fg="#626262", ctermfg=241, italic=true, })
 vim.api.nvim_set_hl(0, "Constant",  { fg="#eeeeee", ctermfg=255, bold=true, })
 vim.api.nvim_set_hl(0, "Identifier", { fg=xterm_to_gui[230], ctermfg=230 })

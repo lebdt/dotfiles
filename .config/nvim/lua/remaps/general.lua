@@ -60,3 +60,6 @@ vim.keymap.set("n", "N", "Nzzzv")
 -- Jump to next and previous diagnostic
 vim.keymap.set("n", "g[", vim.diagnostic.goto_prev, {})
 vim.keymap.set("n", "g]", vim.diagnostic.goto_next, {})
+
+-- Unwrap/Wrap lines
+vim.keymap.set("n", "<Space>w", ":set wrap!<CR>")

@@ -1,6 +1,6 @@
-if vim.loader then
-  vim.loader.enable()
-end
+-- if vim.loader then
+--   vim.loader.enable()
+-- end
 
 local g = vim.g
 local opt = vim.opt
@@ -31,8 +31,10 @@ else
 end
 
 -- opt.updatetime = 900
+opt.spelllang = "en,pt"
+opt.relativenumber = true
 opt.autoread = true
-opt.incsearch = false
+opt.incsearch = true
 opt.spell = false
 opt.splitright = true
 opt.splitbelow = true
@@ -88,8 +90,22 @@ let tabStr = ''
 endfunction
 ]]
 
+
+cmd [[
+function! RegexOr()
+try
+  :%s;/$;;
+finally
+  :%s;\n;|;
+  :%s;^;(;
+  :%s;.$;);
+endtry
+endfunction
+]]
+
 api.nvim_create_user_command('DottedTabLine', 'set tabline=%!DottedTabLine()',{})
 api.nvim_create_user_command('FullTabLine', 'set tabline=%!FullTabLine()',{})
+api.nvim_create_user_command('RegexOr', 'call RegexOr()',{})
 
 function NoteMode()
   opt_local.titlestring = "⠀"
@@ -145,6 +161,7 @@ vim.api.nvim_create_autocmd({"TermEnter"}, {
   pattern = "*",
   callback = function()
     vim.opt_local.number = false
+    vim.opt_local.relativenumber = false
   end,
 })
 

@@ -48,6 +48,9 @@ shift + alt - b : yabai -m config layout bsp
 # open terminal
 cmd - return : wezterm
 
+# open alacritty
+shift + cmd - return: /Users/ebd/Applications/kitty.app/Contents/MacOS/kitty
+
 # balance size of windows
 shift + alt - 0 : yabai -m space --balance
 
