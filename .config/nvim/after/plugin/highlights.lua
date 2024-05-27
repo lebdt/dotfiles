@@ -298,10 +298,12 @@ vim.api.nvim_set_hl(0, "Search", { ctermfg=161, ctermbg=NONE, underline=false, b
 vim.api.nvim_set_hl(0, "FloatBorder", { ctermbg=NONE, ctermfg=255, bg=NONE, fg=xterm_to_gui[255] })
 vim.api.nvim_set_hl(0, "MsgArea", { ctermfg=180, fg=xterm_to_gui[180]})
 vim.api.nvim_set_hl(0, "MsgSeparator", { ctermbg=NONE, bg=NONE})
-vim.api.nvim_set_hl(0, "CursorlineNr", { ctermbg=NONE, ctermfg=78, bold=false, bg=NONE, fg=xterm_to_gui[78]})
+vim.api.nvim_set_hl(0, "CursorlineNr", { ctermbg=NONE, ctermfg=220, bold=false, bg=NONE, fg=xterm_to_gui[78]})
 vim.api.nvim_set_hl(0, "LineNr", { ctermfg=238, ctermbg=NONE, bg=NONE, fg=xterm_to_gui[240]})
 vim.api.nvim_set_hl(0, "NonText", { bold=false, italic=false, underline=false, ctermfg=NONE,fg=NONE })
+vim.api.nvim_set_hl(0, "Visual", { bold=false, italic=false, underline=false, ctermfg=232, ctermbg=220 })
 vim.api.nvim_set_hl(0, "MatchParen", { bold=true, italic=false, underline=false, ctermfg=35, fg=xterm_to_gui[35] })
+
 
 -- Netrw
 vim.api.nvim_set_hl(0, "netrwClassify", { ctermfg=37, fg=xterm_to_gui[37] })

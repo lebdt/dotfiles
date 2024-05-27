@@ -68,7 +68,7 @@ end
 
 config.colors = {
   cursor_fg = "#010101",
-  cursor_bg = "#60d787",
+  cursor_bg = "#ffd700",
   cursor_border = myColors.bg,
   background = myColors.bg,
 

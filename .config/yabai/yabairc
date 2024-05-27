@@ -48,5 +48,6 @@ yabai -m rule --add app="WhatsApp" manage=off
 yabai -m rule --add app="Archive Utility" manage=off
 yabai -m rule --add app="The Unarchiver" manage=off
 yabai -m rule --add app="Python" manage=off
+yabai -m rule --add app="mpv" manage=off
 
 # echo "yabai configuration loaded.."

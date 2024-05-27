@@ -257,6 +257,10 @@ export VISUAL=nvim
 
 export EDITOR="$VISUAL"
 
-export NEOVIDE_FRAME=buttonless
+# export NEOVIDE_FRAME=buttonless
+
+export JUPYTER_PATH=/opt/homebrew/share/jupyter 
+
+export JUPYTER_CONFIG_PATH=/opt/homebrew/etc/jupyter
 
 bindkey -v

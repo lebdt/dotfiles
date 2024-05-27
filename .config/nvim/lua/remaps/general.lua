@@ -63,3 +63,6 @@ vim.keymap.set("n", "g]", vim.diagnostic.goto_next, {})
 
 -- Unwrap/Wrap lines
 vim.keymap.set("n", "<Space>w", ":set wrap!<CR>")
+
+-- Oil
+vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })

@@ -8,6 +8,8 @@ require'nvim-treesitter.configs'.setup {
   highlight = {
     enable = true,
   },
+  modules = {},
+  ignore_install = {}
 }
 
 

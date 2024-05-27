@@ -1,6 +1,6 @@
--- if vim.loader then
---   vim.loader.enable()
--- end
+if vim.loader then
+  vim.loader.enable()
+end
 
 local g = vim.g
 local opt = vim.opt
@@ -30,7 +30,7 @@ else
   vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
 end
 
--- opt.updatetime = 900
+opt.updatetime = 700
 opt.spelllang = "en,pt"
 opt.relativenumber = true
 opt.autoread = true
@@ -58,6 +58,7 @@ opt.mousescroll = "ver:2"
 opt.guicursor = "n-c:block,i-ci-ve:ver25,v-r-cr:hor20,o:hor50"
 opt.wrap = false
 opt.termguicolors = false
+opt.shortmess ="ltToOCFI"
 
 api.nvim_command('syntax manual')
 
@@ -83,7 +84,7 @@ let tabStr = ''
         if i + 1 == tabpagenr()
             let tabStr ..= '%#TabLineSel#  ' .. '◉' .. '' .. '─' .. fnamemodify(bufname(tabpagebuflist(i+1)[tabpagewinnr(i+1)-1]), ':t') .. ' '
         else
-            let tabStr ..= '%#TabLine#  ' .. '○' .. '─' .. bufname(tabpagebuflist(i+1)[tabpagewinnr(i+1)-1]) .. ' '
+            let tabStr ..= '%#TabLine#  ' .. '○' .. '─' .. fnamemodify(bufname(tabpagebuflist(i+1)[tabpagewinnr(i+1)-1]),':.') .. ' '
         endif
     endfor
     return tabStr
@@ -108,15 +109,17 @@ api.nvim_create_user_command('FullTabLine', 'set tabline=%!FullTabLine()',{})
 api.nvim_create_user_command('RegexOr', 'call RegexOr()',{})
 
 function NoteMode()
+  opt_local.statusline = ""
   opt_local.titlestring = "⠀"
   opt_local.laststatus = 0
   opt_local.cmdheight = 0
   opt_local.number = false
+  opt_local.relativenumber = false
   opt_local.wrap = true
   opt_local.syntax ="markdown"
   opt_local.guicursor ="n-v:hor1,i:ver1-blinkon1"
   opt_local.scrolloff = 0
-  opt_local.shortmess ="aostcS"
+  opt_local.shortmess ="aostTcSOWCF"
   opt_local.spell = true
 end
 
@@ -173,6 +176,20 @@ if vim.g.neovide then
 end
 
 require("remaps.general")
+
+vim.cmd [[
+func! Init_groups_from_colors()
+    let colors = [ 'red', 'green', 'blue', 'magenta', 'NONE', 'darkred', 'darkblue', 'darkgreen', 'darkmagenta', 'darkcyan' ]
+    for ci in range(len(colors))
+        let cmd = 'highlight column%d ctermfg=%s guifg=%s'
+        exe printf(cmd, ci, colors[ci], colors[ci])
+        let cmd = 'highlight escaped_column%d ctermfg=%s guifg=%s'
+        exe printf(cmd, ci, colors[ci], colors[ci])
+    endfor
+endfunc
+
+call Init_groups_from_colors()
+]]
 
 -- vim.api.nvim_create_user_command('Redir', function(ctx)
 --   local lines = vim.split(vim.api.nvim_exec(ctx.args, true), '\n', { plain = true })

@@ -56,7 +56,7 @@ performance = "High"
 # define x axis padding (default is 10)
 #
 # Example:
-# padding-x = 10
+padding-x = 10
 
 # Option as Alt
 #
@@ -64,7 +64,7 @@ performance = "High"
 # Possible choices: 'both', 'left' and 'right'.
 #
 # Example:
-# option-as-alt = 'left'
+option-as-alt = 'left'
 
 # Window configuration
 #
@@ -88,14 +88,15 @@ performance = "High"
 # • macos-hide-toolbar-buttons - (MacOS only) Hide window buttons
 #
 # Example:
-# [window]
+[window]
 # width = 600
 # height = 400
 # mode = "Windowed"
 # foreground-opacity = 1.0
-# background-opacity = 1.0
+# background-opacity = 0.9
 # blur = false
-# macos-hide-toolbar-buttons = false
+# macos-hide-toolbar-buttons = true
+decorations = "Disabled"
 
 # Window Height
 #
@@ -113,8 +114,9 @@ performance = "High"
 # will always look for regular font bounds whene
 #
 # You can also set family on root to overwritte all fonts
-# [fonts]
-#   family = "cascadiamono"
+[fonts]
+  family = "JetBrainsMono Nerd Font Mono"
+  size = 26
 #
 # You can also specify extra fonts to load
 # [fonts]
@@ -248,10 +250,10 @@ performance = "High"
 # (considering if theme folder does exists and is being used)
 #
 # Example:
-# [colors]
+[colors]
 # background = '#0F0D0E'
 # foreground = '#F9F4DA'
-# cursor = '#F38BA3'
+cursor = '#dadada'
 # tabs = '#443d40'
 # tabs-active = '#F38BA3'
 # green = '#0BA95B'
