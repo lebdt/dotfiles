@@ -72,7 +72,7 @@ local function folderIcon()
 end
 
 
-function section_a_modifier(test)
+function Section_a_modifier(test)
   local section;
   if test == true then
     section = {
@@ -95,21 +95,21 @@ require('lualine').setup {
     section_separators = {},
   },
   sections = {
-    lualine_a = section_a_modifier(vim.g.showCWD),
+    lualine_a = Section_a_modifier(vim.g.showCWD),
     lualine_b = {{
       'filename',
       separator = {
         left = '',
       },
-      file_status = true,      
-      newfile_status = false,  
-      path = 1,                
-      shorting_target = 40,  
+      file_status = true,
+      newfile_status = false,
+      path = 1,
+      shorting_target = 40,
       symbols = {
-        modified = '[+]',      
-        readonly = '[-]',      
-        unnamed = '[No Name]', 
-        newfile = '[New]',     
+        modified = '[+]',
+        readonly = '[-]',
+        unnamed = '[No Name]',
+        newfile = '[New]',
       }
     },
       'branch' },
@@ -136,7 +136,7 @@ require('lualine').setup {
           colored = false,
           icon_only = true,
           icon = { 'X', align = 'right' }
-        }, 
+        },
         'progress',
         {
             'location',

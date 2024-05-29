@@ -24,7 +24,7 @@ opt.swapfile = false
 opt.backup = false
 opt.undofile = true
 
-if vim.fn.has('win32') == 1 or vim.fn.has('win32unix') == 1 then 
+if vim.fn.has('win32') == 1 or vim.fn.has('win32unix') == 1 then
   vim.opt.undodir = "~/AppData/Local/nvim-data/undodir"
 else
   vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
@@ -137,11 +137,11 @@ vim.o.statusline = ""
 
 vim.g.showCWD = true
 
-function toggle_cwd()
+function Toggle_cwd()
   vim.g.showCWD = not vim.g.showCWD
 end
 
-api.nvim_create_user_command("ToggleCWD", [[exec "lua toggle_cwd()" | source  ~/.config/nvim/after/plugin/lualine.lua]], {})
+api.nvim_create_user_command("ToggleCWD", [[exec "lua Toggle_cwd()" | source  ~/.config/nvim/after/plugin/lualine.lua]], {})
 
 
 -- Lazy Package Manager Setup
