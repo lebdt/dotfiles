@@ -10,7 +10,8 @@ eval "$(zoxide init zsh)"
 export HOMEBREW_NO_AUTO_UPDATE=1
 
 # Export path to remove some non-existing dirs in PATH
-export PATH="/Users/ebd/.asdf/shims:/opt/homebrew/opt/asdf/libexec/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/share/dotnet:/Library/Apple/usr/bin:/Users/ebd/.cargo/bin:/Users/ebd/.local/bin"
+export PATH="/Users/ebd/.asdf/shims:/opt/homebrew/opt/asdf/libexec/bin:/opt/homebrew/opt/ruby/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/share/dotnet:/Library/Apple/usr/bin:/Users/ebd/.cargo/bin:/Users/ebd/.local/bin"
+
 
 # Export LIBRARY_PATH to fix some linking errors with rust builds
 export LIBRARY_PATH=$(brew --prefix)/lib
@@ -54,63 +55,63 @@ export LIBRARY_PATH=$(brew --prefix)/lib
 # Uncomment the following line to disable auto-setting terminal title.
 # DISABLE_AUTO_TITLE="true"
 
-# function _dotfiles_ansi_dequote()
-# {
-#   # `strip-ansi-escapes` is a utility that ships with wezterm and filters out ansi escape sequences
-#   if hash strip-ansi-escapes 2>/dev/null ; then
-#     echo "$1" | strip-ansi-escapes
-#   else
-#     echo "$1" | perl -pe "s/\\x1b\[[0-9]+(;[0-9]+)*[km]//g"
-#   fi
-# }
+function _dotfiles_ansi_dequote()
+{
+  # `strip-ansi-escapes` is a utility that ships with wezterm and filters out ansi escape sequences
+  if hash strip-ansi-escapes 2>/dev/null ; then
+    echo "$1" | strip-ansi-escapes
+  else
+    echo "$1" | perl -pe "s/\\x1b\[[0-9]+(;[0-9]+)*[km]//g"
+  fi
+}
 
-# function _dotfiles_set_window_title()
-# {
-#   local title
-#   title=`_dotfiles_ansi_dequote "$1" | perl -pe "s/;//g"`
-#   case $TERM in
-#     xterm*|rxvt*|Eterm|eterm|aixterm|dtterm)
-#       printf "\033]0;%s\a" "$title"
-#       ;;
-#     iris-ansi)
-#       printf "\033P1.y%s\033\\" "$title"
-#       ;;
-#     sun-cmd)
-#       printf "\033]l%s\033\\" "$title"
-#       ;;
-#     hpterm)
-#       printf "\033&f0k%dD%s" "${#title}" "${title}"
-#       ;;
-#     screen*|tmux*)
-#       # screen and tmux window title
-#       printf "\033k%s\033\\" "$title"
-#       # set the tmux pane title too
-#       [[ -n "$TMUX" ]] && printf "\033]2;%s\033\\" "$title"
-#       ;;
-#   esac
-# }
+function _dotfiles_set_window_title()
+{
+  local title
+  title=`_dotfiles_ansi_dequote "$1" | perl -pe "s/;//g"`
+  case $TERM in
+    xterm*|rxvt*|Eterm|eterm|aixterm|dtterm)
+      printf "\033]0;%s\a" "$title"
+      ;;
+    iris-ansi)
+      printf "\033P1.y%s\033\\" "$title"
+      ;;
+    sun-cmd)
+      printf "\033]l%s\033\\" "$title"
+      ;;
+    hpterm)
+      printf "\033&f0k%dD%s" "${#title}" "${title}"
+      ;;
+    screen*|tmux*)
+      # screen and tmux window title
+      printf "\033k%s\033\\" "$title"
+      # set the tmux pane title too
+      [[ -n "$TMUX" ]] && printf "\033]2;%s\033\\" "$title"
+      ;;
+  esac
+}
 
 # Run by zsh immediately before we exec a command; we use it to amend
 # the window title to show what is running.
-# function preexec()
-# {
-#   local cmd
-#   cmd="$1"
-#   case $cmd in
-#     fg*)
-#       # show something more useful than "fg" when we resume a suspended job
-#       local job
-#       read cmd job <<< "$cmd"
-#       if [[ -z "$job" ]] ; then
-#         # the echo is to strip extra whitespace
-#         cmd=$(echo $(builtin jobs -l %+ 2>/dev/null | cut -d' ' -f6-))
-#       else
-#         cmd=$(echo $(builtin jobs -l $job 2>/dev/null | cut -d' ' -f6-))
-#       fi
-#       ;;
-#   esac
-#   _dotfiles_set_window_title "❯  $cmd"
-# }
+function preexec()
+{
+  local cmd
+  cmd="$1"
+  case $cmd in
+    fg*)
+      # show something more useful than "fg" when we resume a suspended job
+      local job
+      read cmd job <<< "$cmd"
+      if [[ -z "$job" ]] ; then
+        # the echo is to strip extra whitespace
+        cmd=$(echo $(builtin jobs -l %+ 2>/dev/null | cut -d' ' -f6-))
+      else
+        cmd=$(echo $(builtin jobs -l $job 2>/dev/null | cut -d' ' -f6-))
+      fi
+      ;;
+  esac
+  _dotfiles_set_window_title "❯ $cmd"
+}
 
 # function set_user_var() {
 #    printf "\033]1337;SetUserVar=%s=%s\007" $1 `echo -n $2 | base64`
@@ -264,3 +265,7 @@ export JUPYTER_PATH=/opt/homebrew/share/jupyter
 export JUPYTER_CONFIG_PATH=/opt/homebrew/etc/jupyter
 
 bindkey -v
+
+export LDFLAGS="-L/opt/homebrew/opt/ruby/lib"
+export CPPFLAGS="-I/opt/homebrew/opt/ruby/include"
+export PKG_CONFIG_PATH="/opt/homebrew/opt/ruby/lib/pkgconfig"

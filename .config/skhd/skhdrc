@@ -46,7 +46,7 @@ shift + alt - f : yabai -m config layout stack
 shift + alt - b : yabai -m config layout bsp
 
 # open terminal
-cmd - return : wezterm
+cmd - return : alacritty
 
 # open alacritty
 shift + cmd - return: /Users/ebd/Applications/kitty.app/Contents/MacOS/kitty

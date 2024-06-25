@@ -2,27 +2,19 @@ if vim.loader then
   vim.loader.enable()
 end
 
-local g = vim.g
-local opt = vim.opt
-local opt_local = vim.opt_local
-local cmd = vim.cmd
-local api = vim.api
-local fn = vim.fn
-local loop = vim.loop
 
+vim.g.mapleader = " "
 
-g.mapleader = " "
+vim.g.netrw_banner = 0
+vim.g.netrw_altv = true
+vim.g.mapleader = " "
 
-g.netrw_banner = 0
-g.netrw_altv = true
-g.mapleader = " "
-
-opt.mouse = {}
-opt.foldmethod = "indent"
-opt.foldenable = false
-opt.swapfile = false
-opt.backup = false
-opt.undofile = true
+vim.opt.mouse = {}
+vim.opt.foldmethod = "indent"
+vim.opt.foldenable = false
+vim.opt.swapfile = false
+vim.opt.backup = false
+vim.opt.undofile = true
 
 if vim.fn.has('win32') == 1 or vim.fn.has('win32unix') == 1 then
   vim.opt.undodir = "~/AppData/Local/nvim-data/undodir"
@@ -30,39 +22,39 @@ else
   vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
 end
 
-opt.updatetime = 700
-opt.spelllang = "en,pt"
-opt.relativenumber = true
-opt.autoread = true
-opt.incsearch = true
-opt.spell = false
-opt.splitright = true
-opt.splitbelow = true
-opt.showmode = false
-opt.linebreak = true
-opt.number = true
-opt.scrolloff = 9
-opt.ignorecase = true
-opt.smartcase = true
-opt.fillchars='lastline:.,eob: '
-opt.tabstop = 2
-opt.shiftwidth = 2
-opt.expandtab = true
-opt.smarttab = true
-opt.cursorline = true
-opt.cursorlineopt = 'number'
-opt.laststatus = 3
-opt.cmdheight = 1
-opt.signcolumn = 'number'
-opt.mousescroll = "ver:2"
-opt.guicursor = "n-c:block,i-ci-ve:ver25,v-r-cr:hor20,o:hor50"
-opt.wrap = false
-opt.termguicolors = false
-opt.shortmess ="ltToOCFI"
+vim.opt.updatetime = 700
+vim.opt.spelllang = "en,pt"
+vim.opt.relativenumber = true
+vim.opt.autoread = true
+vim.opt.incsearch = true
+vim.opt.spell = false
+vim.opt.splitright = true
+vim.opt.splitbelow = true
+vim.opt.showmode = false
+vim.opt.linebreak = true
+vim.opt.number = true
+vim.opt.scrolloff = 9
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
+vim.opt.fillchars='lastline:.,eob: '
+vim.opt.tabstop = 2
+vim.opt.shiftwidth = 2
+vim.opt.expandtab = true
+vim.opt.smarttab = true
+vim.opt.cursorline = true
+vim.opt.cursorlineopt = 'number'
+vim.opt.laststatus = 3
+vim.opt.cmdheight = 1
+vim.opt.signcolumn = 'number'
+vim.opt.mousescroll = "ver:2"
+vim.opt.guicursor = "n-c:block,i-ci-ve:ver25,v-r-cr:hor20,o:hor50"
+vim.opt.wrap = false
+vim.opt.termguicolors = false
+vim.opt.shortmess ="ltToOCFI"
 
-api.nvim_command('syntax manual')
+vim.api.nvim_command('syntax manual')
 
-cmd [[
+vim.cmd [[
 function! DottedTabLine()
 let tabStr = ''
     for i in range(tabpagenr('$'))
@@ -77,14 +69,19 @@ endfunction | set tabline=%!DottedTabLine()
 ]]
 
 
-cmd [[
+vim.cmd [[
 function! FullTabLine()
 let tabStr = ''
     for i in range(tabpagenr('$'))
+        let mod = getbufvar(tabpagebuflist(i+1)[tabpagewinnr(i+1)-1], '&mod')
+        let mod_s = ' '
+        if mod == 1
+            let mod_s = ' [+] ' 
+        endif
         if i + 1 == tabpagenr()
-            let tabStr ..= '%#TabLineSel#  ' .. '◉' .. '' .. '─' .. fnamemodify(bufname(tabpagebuflist(i+1)[tabpagewinnr(i+1)-1]), ':t') .. ' '
+            let tabStr ..= '%#TabLineSel#  ' .. '◉' .. '' .. '─' .. fnamemodify(bufname(tabpagebuflist(i+1)[tabpagewinnr(i+1)-1]), ':t') .. mod_s
         else
-            let tabStr ..= '%#TabLine#  ' .. '○' .. '─' .. fnamemodify(bufname(tabpagebuflist(i+1)[tabpagewinnr(i+1)-1]),':.') .. ' '
+            let tabStr ..= '%#TabLine#  ' .. '○' .. '─' .. fnamemodify(bufname(tabpagebuflist(i+1)[tabpagewinnr(i+1)-1]),':.') .. mod_s
         endif
     endfor
     return tabStr
@@ -92,7 +89,7 @@ endfunction
 ]]
 
 
-cmd [[
+vim.cmd [[
 function! RegexOr()
 try
   :%s;/$;;
@@ -104,26 +101,26 @@ endtry
 endfunction
 ]]
 
-api.nvim_create_user_command('DottedTabLine', 'set tabline=%!DottedTabLine()',{})
-api.nvim_create_user_command('FullTabLine', 'set tabline=%!FullTabLine()',{})
-api.nvim_create_user_command('RegexOr', 'call RegexOr()',{})
+vim.api.nvim_create_user_command('DottedTabLine', 'set tabline=%!DottedTabLine()',{})
+vim.api.nvim_create_user_command('FullTabLine', 'set tabline=%!FullTabLine()',{})
+vim.api.nvim_create_user_command('RegexOr', 'call RegexOr()',{})
 
 function NoteMode()
-  opt_local.statusline = ""
-  opt_local.titlestring = "⠀"
-  opt_local.laststatus = 0
-  opt_local.cmdheight = 0
-  opt_local.number = false
-  opt_local.relativenumber = false
-  opt_local.wrap = true
-  opt_local.syntax ="markdown"
-  opt_local.guicursor ="n-v:hor1,i:ver1-blinkon1"
-  opt_local.scrolloff = 0
-  opt_local.shortmess ="aostTcSOWCF"
-  opt_local.spell = true
+  vim.opt_local.statusline = ""
+  vim.opt_local.titlestring = "⠀"
+  vim.opt_local.laststatus = 0
+  vim.opt_local.cmdheight = 0
+  vim.opt_local.number = false
+  vim.opt_local.relativenumber = false
+  vim.opt_local.wrap = true
+  vim.opt_local.syntax ="markdown"
+  vim.opt_local.guicursor ="n-v:hor1,i:ver1-blinkon1"
+  vim.opt_local.scrolloff = 0
+  vim.opt_local.shortmess ="aostTcSOWCF"
+  vim.opt_local.spell = true
 end
 
-api.nvim_create_user_command('NoteMode', 'cd ~/Documents/NoteMode | lua NoteMode()',{})
+vim.api.nvim_create_user_command('NoteMode', 'cd ~/Documents/NoteMode | lua NoteMode()',{})
 
 vim.api.nvim_create_autocmd("CmdlineLeave", {
 	callback = function()
@@ -141,18 +138,21 @@ function Toggle_cwd()
   vim.g.showCWD = not vim.g.showCWD
 end
 
-api.nvim_create_user_command("ToggleCWD", [[exec "lua Toggle_cwd()" | source  ~/.config/nvim/after/plugin/lualine.lua]], {})
+vim.api.nvim_create_user_command("ToggleCWD", [[exec "lua Toggle_cwd()" | source  ~/.config/nvim/after/plugin/lualine.lua]], {})
 
 
 -- Lazy Package Manager Setup
-local lazypath = fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not loop.fs_stat(lazypath) then
-  fn.system({
-    "git clone --filter=blob:none https://github.com/folke/lazy.nvim.git --branch=stable",
-    lazypath,
-  })
-end
-opt.rtp:prepend(lazypath)
+
+  local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+
+  -- if not vim.loop.fs_stat(lazypath) then
+  --   vim.fn.system({
+  --     "git clone --filter=blob:none https://github.com/folke/lazy.nvim.git --branch=stable",
+  --     lazypath,
+  --   })
+  -- end
+
+vim.opt.rtp:prepend(lazypath)
 require("lazy").setup("lazy.plugins", {
   ui = {
     border = 'rounded',
@@ -163,15 +163,15 @@ require("lazy").setup("lazy.plugins", {
 vim.api.nvim_create_autocmd({"TermEnter"}, {
   pattern = "*",
   callback = function()
-    vim.opt_local.number = false
-    vim.opt_local.relativenumber = false
+    vim.vim.opt_local.number = false
+    vim.vim.opt_local.relativenumber = false
   end,
 })
 
 
 
 if vim.g.neovide then
-    vim.g.neovideFontSize = 16.0
+    vim.g.neovideFontSize = 18.0
     require("neovide.settings")
 end
 
@@ -195,5 +195,5 @@ call Init_groups_from_colors()
 --   local lines = vim.split(vim.api.nvim_exec(ctx.args, true), '\n', { plain = true })
 --   vim.cmd('new')
 --   vim.api.nvim_buf_set_lines(0, 0, -1, false, lines)
---   vim.opt_local.modified = false
+--   vim.vim.opt_local.modified = false
 -- end, { nargs = '+', complete = 'command' })

@@ -28,8 +28,6 @@ return {
     lazy = false,
   },
 
-  "nvim-treesitter/playground",
-
   "windwp/nvim-ts-autotag",
 
   {
@@ -72,12 +70,12 @@ return {
     lazy = false,
   },
 
-  {
-    "numToStr/Comment.nvim",
-    config = true,
-    opts = {},
-    lazy = false,
-  },
+  -- {
+  --   "numToStr/Comment.nvim",
+  --   config = true,
+  --   opts = {},
+  --   lazy = false,
+  -- },
 
   {
     "m4xshen/autoclose.nvim",
@@ -88,11 +86,6 @@ return {
     "kylechui/nvim-surround",
     version = "*",
     lazy = false,
-  },
-
-  {
-    "nvim-tree/nvim-tree.lua",
-    lazy=false,
   },
 
   -- {

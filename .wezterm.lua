@@ -1,21 +1,21 @@
 -- currentHour = tonumber(os.date('%H'))
 
 -- randomNumber = math.random(10)
-randomNumber = 10
+RandomNumber = 4
 
-if randomNumber < 5 then
-  myColors = {
+if RandomNumber <= 5 then
+  MyColors = {
     bg            = "111111",
     tab_title_bg  = '111111',
-    border        = "111111",
+    border        = "101010",
     black         = '020202',
     right_status  = '282B33',
   }
 else
-  myColors = {
+  MyColors = {
     bg            = "12171f",
     tab_title_bg  = "12171f",
-    border        = "12171f",
+    border        = "11151e",
     black         = "081017",
     right_status  = '081017',
   }
@@ -54,26 +54,26 @@ config.check_for_updates = false
 config.window_close_confirmation = 'AlwaysPrompt'
 config.show_new_tab_button_in_tab_bar = false
 config.show_tab_index_in_tab_bar = true
-config.window_background_opacity = 0.999
--- config.macos_window_background_blur = 10
+config.window_background_opacity = 0.975
+config.macos_window_background_blur = 30
 -- config.text_background_opacity = 1
 -- config.initial_rows = 30
 -- config.initial_cols = 92
 
-local function basename(s)
-  return s:gsub('(.*[/\\])(.*)', '%2')
-end
+-- local function basename(s)
+--   return s:gsub('(.*[/\\])(.*)', '%2')
+-- end
 
 
 
 config.colors = {
   cursor_fg = "#010101",
   cursor_bg = "#ffd700",
-  cursor_border = myColors.bg,
-  background = myColors.bg,
+  cursor_border = MyColors.bg,
+  background = MyColors.bg,
 
   ansi = {
-    myColors.black,
+    MyColors.black,
     'e33232',
     'b3d64e',
     'ff926e',
@@ -97,12 +97,12 @@ config.colors = {
   tab_bar = {
     -- The color of the strip that goes along the top of the window
     -- (does not apply when fancy tab bar is in use)
-    background = myColors.bg,
+    background = MyColors.bg,
 
     -- The active tab is the one that has focus in the window
     active_tab = {
       -- The color of the background area for the tab
-      bg_color = myColors.bg,
+      bg_color = MyColors.bg,
       -- fg_color = 'AEAEAE',
       fg_color = 'cdcdcd',
 
@@ -127,7 +127,7 @@ config.colors = {
 
     -- Inactive tabs are the tabs that do not have focus
     inactive_tab = {
-      bg_color = myColors.bg,
+      bg_color = MyColors.bg,
       fg_color = "424242"
     },
 
@@ -171,20 +171,21 @@ config.window_padding = {
   bottom  = '0.2cell',
 }
 
-local borderWidth = 0
+
+local borderWidth = 4
 
 config.window_frame = {
-  -- border_left_width     = borderWidth,
-  -- border_right_width    = borderWidth,
-  -- border_bottom_height  = borderWidth,
-  -- border_top_height     = borderWidth,
-  -- border_left_color     = myColors.border,
-  -- border_right_color    = myColors.border,
-  -- border_bottom_color   = myColors.border,
-  -- border_top_color      = myColors.border,
+  border_left_width     = borderWidth,
+  border_right_width    = borderWidth,
+  border_bottom_height  = borderWidth,
+  border_top_height     = borderWidth,
+  border_left_color     = MyColors.border,
+  border_right_color    = MyColors.border,
+  border_bottom_color   = MyColors.border,
+  border_top_color      = MyColors.border,
   font_size             = 13.5,
-  active_titlebar_bg    = myColors.tab_title_bg,
-  inactive_titlebar_bg  = myColors.bg,
+  active_titlebar_bg    = MyColors.tab_title_bg,
+  inactive_titlebar_bg  = MyColors.bg,
   font                  = wezterm.font {
     family = 'SF Pro Display',
     weight = 'Bold'
@@ -193,12 +194,12 @@ config.window_frame = {
 
 -- config.debug_key_events = true
 
-tmux_keys = {
+Tmux_keys = {
 
   {
     key     = 'phys:i',
     mods    = 'CTRL|SHIFT',
-    action  = wezterm.action.Multiple { 
+    action  = wezterm.action.Multiple {
       wezterm.action.SendKey { key='x', mods='CTRL|SHIFT' },
     }
   },
@@ -206,7 +207,7 @@ tmux_keys = {
   {
     key     = '9',
     mods    = 'CMD',
-    action  = wezterm.action.Multiple { 
+    action  = wezterm.action.Multiple {
       wezterm.action.SendKey { key =' ', mods='CTRL' },
       wezterm.action.SendKey { key ='9' }
     }
@@ -215,7 +216,7 @@ tmux_keys = {
   {
     key     = '8',
     mods    = 'CMD',
-    action  = wezterm.action.Multiple { 
+    action  = wezterm.action.Multiple {
       wezterm.action.SendKey { key =' ', mods='CTRL' },
       wezterm.action.SendKey { key ='8' }
     }
@@ -224,7 +225,7 @@ tmux_keys = {
   {
     key     = '7',
     mods    = 'CMD',
-    action  = wezterm.action.Multiple { 
+    action  = wezterm.action.Multiple {
       wezterm.action.SendKey { key =' ', mods='CTRL' },
       wezterm.action.SendKey { key ='7' }
     }
@@ -233,7 +234,7 @@ tmux_keys = {
   {
     key     = '6',
     mods    = 'CMD',
-    action  = wezterm.action.Multiple { 
+    action  = wezterm.action.Multiple {
       wezterm.action.SendKey { key =' ', mods='CTRL' },
       wezterm.action.SendKey { key ='6' }
     }
@@ -242,7 +243,7 @@ tmux_keys = {
   {
     key     = '5',
     mods    = 'CMD',
-    action  = wezterm.action.Multiple { 
+    action  = wezterm.action.Multiple {
       wezterm.action.SendKey { key =' ', mods='CTRL' },
       wezterm.action.SendKey { key ='5' }
     }
@@ -251,7 +252,7 @@ tmux_keys = {
   {
     key     = '4',
     mods    = 'CMD',
-    action  = wezterm.action.Multiple { 
+    action  = wezterm.action.Multiple {
       wezterm.action.SendKey { key =' ', mods='CTRL' },
       wezterm.action.SendKey { key ='4' }
     }
@@ -260,7 +261,7 @@ tmux_keys = {
   {
     key     = '3',
     mods    = 'CMD',
-    action  = wezterm.action.Multiple { 
+    action  = wezterm.action.Multiple {
       wezterm.action.SendKey { key =' ', mods='CTRL' },
       wezterm.action.SendKey { key ='3' }
     }
@@ -269,7 +270,7 @@ tmux_keys = {
   {
     key     = '2',
     mods    = 'CMD',
-    action  = wezterm.action.Multiple { 
+    action  = wezterm.action.Multiple {
       wezterm.action.SendKey { key =' ', mods='CTRL' },
       wezterm.action.SendKey { key ='2' }
     }
@@ -278,7 +279,7 @@ tmux_keys = {
   {
     key     = '1',
     mods    = 'CMD',
-    action  = wezterm.action.Multiple { 
+    action  = wezterm.action.Multiple {
       wezterm.action.SendKey { key =' ', mods='CTRL' },
       wezterm.action.SendKey { key ='1' }
     }
@@ -287,7 +288,7 @@ tmux_keys = {
   {
     key     = 't',
     mods    = 'CMD',
-    action  = wezterm.action.Multiple { 
+    action  = wezterm.action.Multiple {
       wezterm.action.SendKey { key =' ', mods='CTRL' },
       wezterm.action.SendKey { key ='c' }
     }
@@ -296,7 +297,7 @@ tmux_keys = {
   {
     key     = '`',
     mods    = 'CTRL',
-    action  = wezterm.action.Multiple { 
+    action  = wezterm.action.Multiple {
       wezterm.action.SendKey { key =' ', mods='CTRL' },
       wezterm.action.SendKey { key ='`', mods='CTRL' }
     }
@@ -305,7 +306,7 @@ tmux_keys = {
   {
     key     = 'Tab',
     mods    = 'CTRL',
-    action  = wezterm.action.Multiple { 
+    action  = wezterm.action.Multiple {
       wezterm.action.SendKey { key =' ', mods='CTRL' },
       wezterm.action.SendKey { key ='Tab', mods='CTRL' }
     }
@@ -396,8 +397,8 @@ config.keys = {
 }
 
 
-for i=1, #tmux_keys, 1 do
-  table.insert(config.keys, tmux_keys[i])
+for i=1, #Tmux_keys, 1 do
+  table.insert(config.keys, Tmux_keys[i])
 end
 
 -- if os.getenv('TMUX') then

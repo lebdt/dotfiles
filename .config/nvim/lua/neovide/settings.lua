@@ -1,13 +1,16 @@
 if vim.g.neovide then
+vim.cmd[[cd ~]]
 
--- Helper function for transparency formatting
-local alpha = function()
-  return string.format("%x", math.floor(255 * vim.g.transparency or 0.8))
-end
 vim.g.neovide_transparency = 1
 vim.g.transparency = 0
-vim.g.neovide_background_color = "#0f1117" .. alpha()
--- vim.g.neovide_background_color = "#12171f" .. alpha()
+vim.cmd[[hi Normal guibg=#0f1117]]
+vim.cmd[[hi Visual guibg=#808885]]
+vim.cmd[[hi Diagnostic guibg=#808885]]
+vim.cmd[[hi DiagnosticErrorPlusBG guibg=Black]]
+vim.cmd[[hi DiagnosticWarnPlusBG  guibg=Black]]
+vim.cmd[[hi DiagnosticInfoPlusBG  guibg=Black]]
+vim.cmd[[hi DiagnosticHintPlusBG  guibg=Black]]
+
 vim.g.neovide_padding_top = 30
 vim.g.neovide_padding_bottom = 1
 vim.g.neovide_padding_right = 28
