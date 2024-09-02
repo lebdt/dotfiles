@@ -134,11 +134,11 @@ fish_style_pwd_dir_length = 1
 truncation_symbol = "…/"
 
 [battery]
-discharging_symbol = '󰁺 '
-empty_symbol = '󰂎 '
-unknown_symbol = '󰂎 '
-charging_symbol = '󰂄 '
-full_symbol = '󰁹 '
+discharging_symbol = ' 󰁺 '
+empty_symbol = ' 󰂎 '
+unknown_symbol = ' 󰂎 '
+charging_symbol = ' 󰂄 '
+full_symbol = ' 󰁹 '
 
 [[battery.display]]
 threshold = 10

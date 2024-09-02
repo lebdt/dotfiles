@@ -1,3 +1,10 @@
+local ok, wf = pcall(require, 'vim.lsp._watchfiles')
+if ok then
+    wf._watchfunc = function()
+        return function() end
+    end
+end
+
 local lsp = require('lsp-zero').preset({})
 
 lsp.on_attach(function(client, bufnr)

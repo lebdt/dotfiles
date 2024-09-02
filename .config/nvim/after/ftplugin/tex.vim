@@ -1,5 +1,5 @@
+set syntax=tex
 setlocal wrap
-setlocal syntax=tex
 
 nnoremap <buffer> j gj
 nnoremap <buffer> k gk

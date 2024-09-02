@@ -209,6 +209,10 @@ function preexec()
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 #
+sesh () {
+  nvim -S ~/.vimsessions/"$1"
+}
+
 alias nvimdiff="nvim -d"
 
 alias manga="python3 ~/Documents/Mangas/mangascrape.py"
@@ -269,3 +273,12 @@ bindkey -v
 export LDFLAGS="-L/opt/homebrew/opt/ruby/lib"
 export CPPFLAGS="-I/opt/homebrew/opt/ruby/include"
 export PKG_CONFIG_PATH="/opt/homebrew/opt/ruby/lib/pkgconfig"
+
+# >>> juliaup initialize >>>
+
+# !! Contents within this block are managed by juliaup !!
+
+path=('/Users/ebd/.juliaup/bin' $path)
+export PATH
+
+# <<< juliaup initialize <<<

@@ -16,10 +16,10 @@ api.nvim_set_keymap("n", "<space>s", "<cmd>Sexplore<CR>", { noremap = true })
 api.nvim_set_keymap("v", "<C-c>", '"*y', { noremap = true })
 api.nvim_set_keymap("v", "<Space>y", '"*y', { noremap = true }) -- This one copies to clipboard and default register so pasting with "p/P" also works
 
--- Send to Terminal Buffer (More used in Rlang Setups)
-api.nvim_set_keymap("n", "<M-T>", [[<cmd>let Channel = &channel<CR> | :echo "Channel =" &channel<CR>]], { noremap = true }) -- Assign Current Terminal channel to 'Channel' variable
-api.nvim_set_keymap("n", "<M-U>", [[:.y | call chansend(Channel, @")<CR><CR>]], { noremap = true })
-api.nvim_set_keymap("v", "<M-U>", [[:y | call chansend(Channel, @")<CR><CR>]], { noremap = true })
+-- Send to Terminal Buffer (More used in R Setups)
+api.nvim_set_keymap("n", "<M-x>", [[<cmd>let Channel = &channel<CR> | :echo "Channel =" &channel<CR>]], { noremap = true }) -- Assign Current Terminal channel to 'Channel' variable
+-- api.nvim_set_keymap("n", "<M-U>", [[:.y | call chansend(Channel, @")<CR><CR>]], { noremap = true })
+-- api.nvim_set_keymap("v", "<M-U>", [[:y | call chansend(Channel, @")<CR><CR>]], { noremap = true })
 
 -- Faster Window Navigation (Replaced by vim-tmux-navigator)
 -- api.nvim_set_keymap("n", "<C-h>", "<cmd>wincmd h<CR>", { noremap = true })

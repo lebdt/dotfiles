@@ -1,6 +1,7 @@
 " vim.api.nvim_buf_set_keymap(0, "i", "<M-b", [[<Esc>:w<CR>:!python3 "%"<CR>]], { noremap = true })
 " vim.api.nvim_buf_set_keymap(0, "n", "<M-b", [[:w<CR>:!python3 "%"<CR>]], { noremap = true })
 " vim.api.nvim_buf_set_keymap(0, "n", "<M-B", [[:w<CR>:!python3 "%"]], { noremap = true })
+set syntax=python
 
 inoremap <buffer> <M-b> <Esc>:w<CR>:!python3 "%"<CR>
 nnoremap <buffer> <M-b> :w<CR>:!python3 "%"<CR>

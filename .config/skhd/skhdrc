@@ -3,8 +3,10 @@
 shift + alt - r : yabai -m space --mirror y-axis
 
 # toggle window float
-shift + alt - t : yabai -m window --toggle float --grid 4:4:1:1:2:2
+shift + alt - space : yabai -m window --toggle float --grid 4:4:1:1:2:2
+alt - space : yabai -m window --toggle float --grid 18:20:1:1:18:16
 alt - t : yabai -m window --toggle float --grid 14:12:1:1:10:12
+
 
 # change window focus within space
 alt - j : yabai -m window --focus south

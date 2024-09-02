@@ -17,18 +17,21 @@ return {
     lazy = false,
   },
 
-  {
-    "nvim-treesitter/nvim-treesitter",
-    build = ":TSUpdate",
-    lazy = false,
-  },
-
-  {
-    "nvim-treesitter/nvim-treesitter-context",
-    lazy = false,
-  },
-
-  "windwp/nvim-ts-autotag",
+  -- {
+  --   "nvim-treesitter/nvim-treesitter",
+  --   build = ":TSUpdate",
+  --   lazy = false,
+  -- },
+  --
+  -- {
+  --   "nvim-treesitter/nvim-treesitter-context",
+  --   lazy = false,
+  -- },
+  --
+  -- {
+  --   "windwp/nvim-ts-autotag",
+  --   lazy = true,
+  -- },
 
   {
     "VonHeikemen/lsp-zero.nvim",
@@ -88,8 +91,15 @@ return {
     lazy = false,
   },
 
-  -- {
-  --   "sheerun/vim-polyglot",
-  --   lazy=false,
-  -- },
+  {
+    "j-hui/fidget.nvim",
+    opts = {
+      -- options
+    },
+  },
+
+  {
+    "sheerun/vim-polyglot",
+    lazy=false,
+  },
 }

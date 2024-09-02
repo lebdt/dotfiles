@@ -1,7 +1,6 @@
-if vim.loader then
-  vim.loader.enable()
-end
-
+-- if vim.loader then
+--   vim.loader.enable()
+-- end
 
 vim.g.mapleader = " "
 
@@ -163,8 +162,8 @@ require("lazy").setup("lazy.plugins", {
 vim.api.nvim_create_autocmd({"TermEnter"}, {
   pattern = "*",
   callback = function()
-    vim.vim.opt_local.number = false
-    vim.vim.opt_local.relativenumber = false
+    vim.opt_local.number = false
+    vim.opt_local.relativenumber = false
   end,
 })
 
