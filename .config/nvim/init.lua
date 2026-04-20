@@ -1,6 +1,6 @@
--- if vim.loader then
---   vim.loader.enable()
--- end
+if vim.loader then
+  vim.loader.enable()
+end
 
 vim.g.mapleader = " "
 
@@ -23,7 +23,7 @@ end
 
 vim.opt.updatetime = 700
 vim.opt.spelllang = "en,pt"
-vim.opt.relativenumber = true
+vim.opt.relativenumber = false
 vim.opt.autoread = true
 vim.opt.incsearch = true
 vim.opt.spell = false
@@ -86,6 +86,7 @@ let tabStr = ''
     return tabStr
 endfunction
 ]]
+
 
 
 vim.cmd [[
@@ -196,3 +197,7 @@ call Init_groups_from_colors()
 --   vim.api.nvim_buf_set_lines(0, 0, -1, false, lines)
 --   vim.vim.opt_local.modified = false
 -- end, { nargs = '+', complete = 'command' })
+
+vim.cmd[[
+  lua vim.diagnostic.disable()
+]]

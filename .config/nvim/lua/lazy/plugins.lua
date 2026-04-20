@@ -7,7 +7,6 @@ return {
   'stevearc/oil.nvim',
     opts = {},
     -- Optional dependencies
-    dependencies = { "nvim-tree/nvim-web-devicons" },
     lazy = false,
   },
 
@@ -17,11 +16,17 @@ return {
     lazy = false,
   },
 
-  -- {
-  --   "nvim-treesitter/nvim-treesitter",
-  --   build = ":TSUpdate",
-  --   lazy = false,
-  -- },
+  {
+    'nvim-telescope/telescope-fzf-native.nvim',
+    build = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release',
+    lazy = false,
+  },
+
+  {
+    "nvim-treesitter/nvim-treesitter",
+    build = ":TSUpdate",
+    lazy = false,
+  },
   --
   -- {
   --   "nvim-treesitter/nvim-treesitter-context",
@@ -32,6 +37,11 @@ return {
   --   "windwp/nvim-ts-autotag",
   --   lazy = true,
   -- },
+  --
+
+  {
+    "ibhagwan/fzf-lua",
+  },
 
   {
     "VonHeikemen/lsp-zero.nvim",
@@ -57,7 +67,7 @@ return {
 
   {
     "nvim-tree/nvim-web-devicons",
-    lazy = false,
+    lazy = true,
   },
 
   {
@@ -69,7 +79,6 @@ return {
 
   {
     "nvim-lualine/lualine.nvim",
-    dependencies = { "nvim-tree/nvim-web-devicons", lazy = true },
     lazy = false,
   },
 
@@ -91,15 +100,14 @@ return {
     lazy = false,
   },
 
-  {
-    "j-hui/fidget.nvim",
-    opts = {
-      -- options
-    },
-  },
+  -- {
+  --   "sheerun/vim-polyglot",
+  --   lazy=false,
+  -- },
 
   {
-    "sheerun/vim-polyglot",
+    "itchyny/vim-cursorword",
     lazy=false,
   },
+
 }

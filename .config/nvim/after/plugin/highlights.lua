@@ -291,6 +291,7 @@ vim.api.nvim_set_hl(0, "Pmenu", { ctermbg=NONE, ctermfg=249,bg=NONE, fg="#a8a8a8
 vim.api.nvim_set_hl(0, "PmenuSel", { ctermbg=240, ctermfg=252, bg="#4e4e4e", fg="#c6c6c6" })
 vim.api.nvim_set_hl(0, "Pmenu", { ctermbg=NONE, ctermfg=249, bg=NONE, fg=xterm_to_gui[249] })
 vim.api.nvim_set_hl(0, "Normal", { ctermbg=NONE, ctermfg=255, fg=xterm_to_gui[255], bg=NONE })
+vim.api.nvim_set_hl(0, "EndOfBuffer", { ctermbg=NONE, ctermfg=255, fg=xterm_to_gui[255], bg=NONE })
 vim.api.nvim_set_hl(0, "NormalFloat", { ctermbg=NONE, ctermfg=249, bg=NONE, fg=xterm_to_gui[249] })
 vim.api.nvim_set_hl(0, "TabLineSel", { ctermbg=NONE, bold=false, ctermfg=253, bg=NONE, fg=xterm_to_gui[253]})
 vim.api.nvim_set_hl(0, "TabLine", { ctermfg=240, ctermbg=NONE, bg=NONE, fg=xterm_to_gui[240]})

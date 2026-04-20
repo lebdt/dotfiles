@@ -274,6 +274,11 @@ export LDFLAGS="-L/opt/homebrew/opt/ruby/lib"
 export CPPFLAGS="-I/opt/homebrew/opt/ruby/include"
 export PKG_CONFIG_PATH="/opt/homebrew/opt/ruby/lib/pkgconfig"
 
+# export SPARK_HOME="/Users/ebd/Downloads/spark-3.5.3-bin-hadoop3"
+export PYSPARK_PYTHON=python3.12
+#
+# export JAVA_HOME=/opt/homebrew/opt/openjdk/libexec/openjdk.jdk/Contents/Home
+
 # >>> juliaup initialize >>>
 
 # !! Contents within this block are managed by juliaup !!
