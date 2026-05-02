@@ -1,6 +1,6 @@
 set termguicolors
 set number
-set fillchars+=lastline:.,eob:\  
+set fillchars+=lastline:.,eob:\ ,vert:│
 set ttimeoutlen=10
 syntax on
 
@@ -79,11 +79,11 @@ let g:StslineColorLight  = "#C0C0C0"
 let g:StslineColorDark   = "#080808"
 let g:StslineColorDark1  = "#181818"
 let g:StslineColorDark2  = "#202020"
-let g:StslineColorDark3  = "#303030"
+let g:StslineColorDark3  = "#081017"
  
  
 " Define colors
-let g:StslineBackColor   = g:StslineColorDark2
+let g:StslineBackColor   = g:StslineColorDark3
 let g:StslineOnBackColor = g:StslineColorLight
 "let g:StslinePriColor   = g:StslineColorGreen
 let g:StslineOnPriColor  = g:StslineColorDark
@@ -129,7 +129,7 @@ set noshowmode
 
 function! ActivateStatusline()
 call GetFileType()
-setlocal statusline=%#StslinePriColorBorderBG#%#StslinePriColorBG#\ %{StslineMode()}%#StslineSecColorBG#%{get(b:,'coc_git_status',b:GitBranch)}%{get(b:,'coc_git_blame','')}%#StslineBackColorFGPriColorBG#%#StslinePriColorFG#\ %{&readonly?\"\ \":\"\"}%F\ %#StslineModColorFG#%{&modified?\"[+]\ \":\"\"}%=%#StslinePriColorFG#\ %{b:FiletypeIcon}\%#StslineSecColorFG#%#StslineSecColorBG#%{&fenc!='utf-8'?\"\ \":''}%{&fenc!='utf-8'?&fenc:''}%{&fenc!='utf-8'?\"\ \":''}%#StslinePriColorFGSecColorBG#%#StslinePriColorBG#\ %p\%%\ %#StslinePriColorBGBold#%l%#StslinePriColorBG#\:%c\ 
+setlocal statusline=%#StslinePriColorBorderBG#%{StslineMode()}%#StslineSecColorBG#%{get(b:,'coc_git_status',b:GitBranch)}%{get(b:,'coc_git_blame','')}%#StslinePriColorFG#\ %{&readonly?\"\ \":\"\"}%F\ %#StslineModColorFG#%{&modified?\"[+]\ \":\"\"}%=%#StslineSecColorBG#%{&fenc!='utf-8'?\"\ \":''}%{&fenc!='utf-8'?&fenc:''}%{&fenc!='utf-8'?\"\ \":''}%#StslineSecColorBG#\ %p\%%\ ･\ %#StslineSecColorBG#%l%#StslineSecColorBG#\:%c\ %#StslinePriColorBorderBG#
 endfunction
 
 
@@ -212,10 +212,10 @@ endfunction
 " Update colors. Recreate highlight groups with new Primary color value.
 function! UpdateStslineColors()
 
-execute 'highlight StslinePriColorBorderBG           guifg=' . g:StslinePriColor ' guibg=' . g:StslineOnPriColor
+execute 'highlight StslinePriColorBorderBG           guifg=' . g:StslineSecColor ' guibg=NONE'
 execute 'highlight StslinePriColorBG           guifg=' . g:StslineOnPriColor ' guibg=' . g:StslinePriColor
 execute 'highlight StslinePriColorBGBold       guifg=' . g:StslineOnPriColor ' guibg=' . g:StslinePriColor ' gui=bold'
-execute 'highlight StslinePriColorFG           guifg=' . g:StslinePriColor   ' guibg=' . g:StslineBackColor
+execute 'highlight StslinePriColorFG           guifg=' . g:StslinePriColor   ' guibg=' . g:StslineSecColor
 execute 'highlight StslinePriColorFGSecColorBG guifg=' . g:StslinePriColor   ' guibg=' . g:StslineSecColor
 execute 'highlight StslineSecColorFGPriColorBG guifg=' . g:StslineSecColor   ' guibg=' . g:StslinePriColor
 
@@ -617,26 +617,242 @@ highlight Operator   ctermfg=202 guifg=#ff5f00
 highlight Repeat     ctermfg=209 guifg=#ff875f
 highlight Statement  ctermfg=209 guifg=#ff875f
 
+highlight Delimiter guifg=#717171 ctermfg=DarkGray
 highlight SignColumn   ctermbg=NONE guibg=NONE
 highlight TabLineFill  ctermbg=NONE guibg=NONE
 highlight WinSeparator ctermfg=237 ctermbg=NONE guifg=#303030 guibg=NONE
+highlight VertSplit ctermfg=237 ctermbg=NONE guifg=#303030 guibg=NONE
 highlight Pmenu        ctermbg=NONE cterm=NONE ctermfg=249 guibg=NONE
 execute 'highlight Pmenu ctermfg=249 ctermbg=NONE guibg=NONE guifg=' . s:G(249)
 highlight PmenuSel     ctermbg=240 ctermfg=252 guibg=#4e4e4e guifg=#c6c6c6
 execute 'highlight Normal ctermfg=255 ctermbg=NONE guibg=NONE guifg=' . s:G(255)
 execute 'highlight EndOfBuffer ctermfg=255 ctermbg=NONE guibg=NONE guifg=' . s:G(255)
 execute 'highlight NormalFloat ctermfg=249 ctermbg=NONE guibg=NONE guifg=' . s:G(249)
-execute 'highlight TabLineSel ctermfg=253 ctermbg=NONE guibg=NONE guifg=' . s:G(253)
+execute 'highlight TabLineSel cterm=NONE ctermfg=253 ctermbg=NONE guibg=NONE gui=NONE guifg=' . s:G(253)
 execute 'highlight TabLine ctermfg=240 ctermbg=NONE guibg=NONE guifg=' . s:G(240)
 highlight Search       ctermfg=161 ctermbg=NONE cterm=bold guifg=#d70000 guibg=NONE gui=bold
 execute 'highlight FloatBorder ctermfg=255 ctermbg=NONE guibg=NONE guifg=' . s:G(255)
 execute 'highlight MsgArea ctermfg=180 guifg=' . s:G(180)
 highlight MsgSeparator ctermbg=NONE guibg=NONE
-execute 'highlight CursorLineNr cterm=bold ctermfg=223 ctermbg=NONE guibg=NONE guifg=' . s:G(223)
+highlight CursorLineNr cterm=bold ctermfg=220 ctermbg=NONE guibg=NONE guifg=#F5CF02
 execute 'highlight LineNr cterm=NONE ctermfg=238 ctermbg=NONE gui=bold guibg=NONE guifg=' . s:G(240)
 highlight NonText      cterm=NONE ctermfg=NONE gui=NONE guifg=NONE
-execute 'highlight Visual       cterm=NONE ctermfg=232 ctermbg=220 guibg=' . s:G(220) . ' guifg=' . s:G(232)
+execute 'highlight Visual       cterm=NONE ctermfg=232 ctermbg=220 guibg=#F5CF02' . ' guifg=' . s:G(232)
 execute 'highlight MatchParen ctermfg=35 cterm=bold gui=bold guifg=' . s:G(35)
 
 " Netrw
 execute 'highlight netrwClassify ctermfg=37 guifg=' . s:G(37)
+
+" Netrw Explorer
+nnoremap <Space>e :Explore<CR>
+nnoremap <Space>f :Vexplore!<CR>
+nnoremap <Space>s :Sexplore<CR>
+
+" Copy to Clipboard
+vnoremap <C-c> "*y
+vnoremap <Space>y "*y
+
+" Refresh Syntax Highlighting
+nnoremap <M-r> :exec "set syntax=" . &filetype<CR> :exec "echo " . "\"Syntax Highlighting:\"" . &filetype<CR>
+
+" Resize window to fit content
+nnoremap <M-R> :exec "horizontal resize" line('w$')<CR> :exec "echo " . "\"Window Height Resized:\"" . line('w$') . "\"lines\""<CR>
+
+" Tab Switcher
+nnoremap <Tab> :tabnext<CR>
+nnoremap ` :tabprev<CR>
+
+" Remove Search Highlights
+nnoremap <Space>/ :nohls<CR>
+
+" Alternative Terminal Exit
+tnoremap <Esc><Esc> <C-\><C-n>
+
+" Ctrl-I workaround (most terminals send Ctrl-I as Tab)
+nnoremap <C-x> <C-i>
+
+" Join and move lines
+vnoremap J :m '>+1<CR>gv=gv
+vnoremap K :m '<-2<CR>gv=gv
+nnoremap J mzJ`z
+
+" Center when jumping to next/previous search match
+nnoremap n nzzzv
+nnoremap N Nzzzv
+
+" Toggle line wrap
+nnoremap <Space>w :set wrap!<CR>
+
+" Move up and down visually. Not linewise
+nnoremap j gj
+nnoremap k gk
+vnoremap j gj
+vnoremap k gk
+
+" Tmux Navigator
+" Maps <C-h/j/k/l> to switch vim splits in the given direction. If there are no more windows in that direction, forwards the operation to tmux.
+" Additionally, <C-\> toggles between last active vim splits/tmux panes.
+
+if exists("g:loaded_tmux_navigator") || &cp || v:version < 700
+  finish
+endif
+let g:loaded_tmux_navigator = 1
+
+function! s:VimNavigate(direction)
+  try
+    execute 'wincmd ' . a:direction
+  catch
+    echohl ErrorMsg | echo 'E11: Invalid in command-line window; <CR> executes, CTRL-C quits: wincmd k' | echohl None
+  endtry
+endfunction
+
+if !get(g:, 'tmux_navigator_no_mappings', 0)
+  nnoremap <silent> <c-h> :<C-U>TmuxNavigateLeft<cr>
+  nnoremap <silent> <c-j> :<C-U>TmuxNavigateDown<cr>
+  nnoremap <silent> <c-k> :<C-U>TmuxNavigateUp<cr>
+  nnoremap <silent> <c-l> :<C-U>TmuxNavigateRight<cr>
+  nnoremap <silent> <c-\> :<C-U>TmuxNavigatePrevious<cr>
+
+  if !empty($TMUX)
+    function! IsFZF()
+      return &ft == 'fzf'
+    endfunction
+    tnoremap <expr> <silent> <C-h> IsFZF() ? "\<C-h>" : "\<C-w>:\<C-U> TmuxNavigateLeft\<cr>"
+    tnoremap <expr> <silent> <C-j> IsFZF() ? "\<C-j>" : "\<C-w>:\<C-U> TmuxNavigateDown\<cr>"
+    tnoremap <expr> <silent> <C-k> IsFZF() ? "\<C-k>" : "\<C-w>:\<C-U> TmuxNavigateUp\<cr>"
+    tnoremap <expr> <silent> <C-l> IsFZF() ? "\<C-l>" : "\<C-w>:\<C-U> TmuxNavigateRight\<cr>"
+  endif
+
+  if !get(g:, 'tmux_navigator_disable_netrw_workaround', 0)
+    if !exists('g:Netrw_UserMaps')
+      let g:Netrw_UserMaps = [['<C-l>', '<C-U>TmuxNavigateRight<cr>']]
+    else
+      echohl ErrorMsg | echo 'vim-tmux-navigator conflicts with netrw <C-l> mapping. See https://github.com/christoomey/vim-tmux-navigator#netrw or add `let g:tmux_navigator_disable_netrw_workaround = 1` to suppress this warning.' | echohl None
+    endif
+  endif
+endif
+
+if empty($TMUX)
+  command! TmuxNavigateLeft call s:VimNavigate('h')
+  command! TmuxNavigateDown call s:VimNavigate('j')
+  command! TmuxNavigateUp call s:VimNavigate('k')
+  command! TmuxNavigateRight call s:VimNavigate('l')
+  command! TmuxNavigatePrevious call s:VimNavigate('p')
+  finish
+endif
+
+command! TmuxNavigateLeft call s:TmuxAwareNavigate('h')
+command! TmuxNavigateDown call s:TmuxAwareNavigate('j')
+command! TmuxNavigateUp call s:TmuxAwareNavigate('k')
+command! TmuxNavigateRight call s:TmuxAwareNavigate('l')
+command! TmuxNavigatePrevious call s:TmuxAwareNavigate('p')
+
+if !exists("g:tmux_navigator_save_on_switch")
+  let g:tmux_navigator_save_on_switch = 0
+endif
+
+if !exists("g:tmux_navigator_disable_when_zoomed")
+  let g:tmux_navigator_disable_when_zoomed = 0
+endif
+
+if !exists("g:tmux_navigator_preserve_zoom")
+  let g:tmux_navigator_preserve_zoom = 0
+endif
+
+if !exists("g:tmux_navigator_no_wrap")
+  let g:tmux_navigator_no_wrap = 0
+endif
+
+let s:pane_position_from_direction = {'h': 'left', 'j': 'bottom', 'k': 'top', 'l': 'right'}
+
+function! s:TmuxOrTmateExecutable()
+  return (match($TMUX, 'tmate') != -1 ? 'tmate' : 'tmux')
+endfunction
+
+function! s:TmuxVimPaneIsZoomed()
+  return s:TmuxCommand("display-message -p '#{window_zoomed_flag}'") == 1
+endfunction
+
+function! s:TmuxSocket()
+  " The socket path is the first value in the comma-separated list of $TMUX.
+  return split($TMUX, ',')[0]
+endfunction
+
+function! s:TmuxCommand(args)
+  let cmd = s:TmuxOrTmateExecutable() . ' -S ' . s:TmuxSocket() . ' ' . a:args
+  let l:x=&shellcmdflag
+  let &shellcmdflag='-c'
+  let retval=system(cmd)
+  let &shellcmdflag=l:x
+  return retval
+endfunction
+
+function! s:TmuxNavigatorProcessList()
+  echo s:TmuxCommand("run-shell 'ps -o state= -o comm= -t ''''#{pane_tty}'''''")
+endfunction
+command! TmuxNavigatorProcessList call s:TmuxNavigatorProcessList()
+
+let s:tmux_is_last_pane = 0
+augroup tmux_navigator
+  au!
+  autocmd WinEnter * let s:tmux_is_last_pane = 0
+augroup END
+
+function! s:NeedsVitalityRedraw()
+  return exists('g:loaded_vitality') && v:version < 704 && !has("patch481")
+endfunction
+
+function! s:ShouldForwardNavigationBackToTmux(tmux_last_pane, at_tab_page_edge)
+  if g:tmux_navigator_disable_when_zoomed && s:TmuxVimPaneIsZoomed()
+    return 0
+  endif
+  return a:tmux_last_pane || a:at_tab_page_edge
+endfunction
+
+
+function! s:TmuxAwareNavigate(direction)
+  let nr = winnr()
+  let tmux_last_pane = (a:direction == 'p' && s:tmux_is_last_pane)
+  if !tmux_last_pane
+    call s:VimNavigate(a:direction)
+  endif
+  let at_tab_page_edge = (nr == winnr())
+  " Forward the switch panes command to tmux if:
+  " a) we're toggling between the last tmux pane;
+  " b) we tried switching windows in vim but it didn't have effect.
+  if s:ShouldForwardNavigationBackToTmux(tmux_last_pane, at_tab_page_edge)
+    if g:tmux_navigator_save_on_switch == 1
+      try
+        update " save the active buffer. See :help update
+      catch /^Vim\%((\a\+)\)\=:E32/ " catches the no file name error
+      endtry
+    elseif g:tmux_navigator_save_on_switch == 2
+      try
+        wall " save all the buffers. See :help wall
+      catch /^Vim\%((\a\+)\)\=:E141/ " catches the no file name error
+      endtry
+    endif
+    let args = 'select-pane -t ' . shellescape($TMUX_PANE) . ' -' . tr(a:direction, 'phjkl', 'lLDUR')
+    if g:tmux_navigator_preserve_zoom == 1
+      let l:args .= ' -Z'
+    endif
+    if g:tmux_navigator_no_wrap == 1 && a:direction != 'p'
+      let args = 'if -F "#{pane_at_' . s:pane_position_from_direction[a:direction] . '}" "" "' . args . '"'
+    endif
+    silent call s:TmuxCommand(args)
+    if s:NeedsVitalityRedraw()
+      redraw!
+    endif
+    let s:tmux_is_last_pane = 1
+  else
+    let s:tmux_is_last_pane = 0
+  endif
+endfunction
+
+let g:tmux_navigator_no_mappings = 1
+
+nnoremap <silent> <C-h> :<C-U>TmuxNavigateLeft<cr>
+nnoremap <silent> <C-j> :<C-U>TmuxNavigateDown<cr>
+nnoremap <silent> <C-k> :<C-U>TmuxNavigateUp<cr>
+nnoremap <silent> <C-l> :<C-U>TmuxNavigateRight<cr>
+nnoremap <silent> <C-p> :<C-U>TmuxNavigatePrevious<cr>
